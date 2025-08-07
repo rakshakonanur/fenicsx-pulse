@@ -239,22 +239,47 @@ class HolzapfelOgden(HyperElasticMaterial):
             return lambda I8: 0.0
 
     @staticmethod
-    def transversely_isotropic_parameters() -> dict[str, Variable]:
+    # def transversely_isotropic_parameters() -> dict[str, Variable]:
+    #     """
+    #     Material parameters for the Holzapfel Ogden model
+    #     Taken from Table 1 row 3 in the main paper
+    #     """
+
+    #     return {
+    #         "a": Variable(2.280, "kPa"),
+    #         "b": Variable(9.726, "dimensionless"),
+    #         "a_f": Variable(1.685, "kPa"),
+    #         "b_f": Variable(15.779, "dimensionless"),
+    #         "a_s": Variable(0.0, "kPa"),
+    #         "b_s": Variable(0.0, "dimensionless"),
+    #         "a_fs": Variable(0.0, "kPa"),
+    #         "b_fs": Variable(0.0, "dimensionless"),
+    #     }
+
+    def transversely_isotropic_parameters(a_val=2.280, a_f_val=1.685) -> dict[str, Variable]:
         """
-        Material parameters for the Holzapfel Ogden model
-        Taken from Table 1 row 3 in the main paper
+        Material parameters for the Holzapfel Ogden model.
+        Taken from Table 1 row 3 in the main paper.
+
+        Parameters
+        ----------
+        a_val : float
+            Value for parameter 'a' (kPa).
+        a_f_val : float
+            Value for parameter 'a_f' (kPa).
         """
 
         return {
-            "a": Variable(2.280, "kPa"),
+            "a": Variable(a_val, "kPa"),
             "b": Variable(9.726, "dimensionless"),
-            "a_f": Variable(1.685, "kPa"),
+            "a_f": Variable(a_f_val, "kPa"),
             "b_f": Variable(15.779, "dimensionless"),
             "a_s": Variable(0.0, "kPa"),
             "b_s": Variable(0.0, "dimensionless"),
             "a_fs": Variable(0.0, "kPa"),
             "b_fs": Variable(0.0, "dimensionless"),
         }
+
 
     @staticmethod
     def partly_orthotropic_parameters() -> dict[str, Variable]:
