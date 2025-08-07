@@ -422,7 +422,7 @@ class StaticProblem:
         """Solve the system"""
 
         # ret = self._solver.solve(rtol=1e-10, atol=1e-6)
-        ret = self._solver.solve(rtol=1e-8, atol=1e-4)
+        ret = self._solver.solve(rtol=1e-7, atol=1e-4)
         self.update_fields()
 
         return ret
